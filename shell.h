@@ -1,4 +1,4 @@
-#ifndef SHELL_H
+ #ifndef SHELL_H
 #define SHELL_H
 
 /*
@@ -19,7 +19,8 @@
 /*
  * Define the structure of a command.
  */
-typedef struct command {
+typedef struct command 
+{
     char *name;
     char **args;
 } command_t;
@@ -41,5 +42,14 @@ extern command_t *parse_cmdline(char *cmdline);
  * This function implements the read-eval-print loop of the shell.
  */
 extern void repl();
+typedef struct shell
+ {
+    char *cwd;
+    command_t *builtins[MAX_BUILTINS];
+    char **history;
+}
+ shell_t;
+
+ 
 
 #endif /* SHELL_H */

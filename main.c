@@ -10,10 +10,12 @@ int main(void)
 
     return 0;
 }
-void repl() {
+void repl()
+ {
     /* Allocate a buffer to store the command line. */
     char *cmdline = malloc(MAX_CMDLINE);
-    if (cmdline == NULL) {
+    if (cmdline == NULL)
+     {
         perror("malloc");
         exit(1);
     }
@@ -31,3 +33,21 @@ void repl() {
     /* Free the command line buffer. */
     free(cmdline);
 }
+int main(void) 
+{
+    // Initialize the shell.
+    shell_t *shell = shell_init();
+    if (shell == NULL) {
+        printf("Failed to initialize shell\n");
+        exit(1);
+    }
+
+    // Start the read-eval-print loop.
+    repl(shell);
+
+    // Destroy the shell.
+    shell_destroy(shell);
+
+    return 0;
+}
+
